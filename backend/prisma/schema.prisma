@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  name         String
+  email        String    @unique
+  passwordHash String    @map("password_hash")
+  phoneNumber  String?   @map("phone_number")
+  role         UserRole
+  createdAt    DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt    DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  bikes        Bike[]
+  mechanic     Mechanic?
+
+  @@index([email], map: "idx_users_email")
+  @@index([role], map: "idx_users_role")
+  @@map("users")
+}
+
+model Bike {
+  id                   String                 @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  ownerId              String                 @map("owner_id") @db.Uuid
+  name                 String
+  description          String?
+  manufacturer         String?
+  type                 BikeType
+  tractionType         TractionType           @map("traction_type")
+  createdAt            DateTime               @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt            DateTime               @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  owner                User                   @relation(fields: [ownerId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  components           Component[]
+  maintenanceRecords   MaintenanceRecord[]
+  scheduledMaintenance ScheduledMaintenance[]
+
+  @@index([ownerId], map: "idx_bikes_owner_id")
+  @@map("bikes")
+}
+
+model Component {
+  id               String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  bikeId           String    @map("bike_id") @db.Uuid
+  name             String
+  description      String?
+  installationDate DateTime? @map("installation_date") @db.Date
+  observation      String?
+  createdAt        DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt        DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  bike             Bike      @relation(fields: [bikeId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([bikeId], map: "idx_components_bike_id")
+  @@map("components")
+}
+
+model Mechanic {
+  id                 String              @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  userId             String              @unique @map("user_id") @db.Uuid
+  address            String
+  phone              String
+  openingHours       String?             @map("opening_hours")
+  rating             Decimal?            @db.Decimal(3, 2)
+  createdAt          DateTime            @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime            @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  maintenanceRecords MaintenanceRecord[]
+  user               User                @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([userId], map: "idx_mechanics_user_id")
+  @@map("mechanics")
+}
+
+model MaintenanceRecord {
+  id                 String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  bikeId             String    @map("bike_id") @db.Uuid
+  mechanicId         String?   @map("mechanic_id") @db.Uuid
+  serviceDate        DateTime  @map("service_date") @db.Date
+  serviceDescription String    @map("service_description")
+  cost               Decimal?  @db.Decimal(10, 2)
+  createdAt          DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt          DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  bike               Bike      @relation(fields: [bikeId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  mechanic           Mechanic? @relation(fields: [mechanicId], references: [id], onUpdate: NoAction)
+
+  @@index([bikeId], map: "idx_maintenance_records_bike_id")
+  @@index([mechanicId], map: "idx_maintenance_records_mechanic_id")
+  @@map("maintenance_records")
+}
+
+model ScheduledMaintenance {
+  id                     String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  bikeId                 String   @map("bike_id") @db.Uuid
+  scheduledDate          DateTime @map("scheduled_date") @db.Date
+  serviceDescription     String   @map("service_description")
+  notificationDaysBefore Int?     @map("notification_days_before")
+  isCompleted            Boolean  @default(false) @map("is_completed")
+  createdAt              DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt              DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+  bike                   Bike     @relation(fields: [bikeId], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([bikeId], map: "idx_scheduled_maintenance_bike_id")
+  @@index([scheduledDate], map: "idx_scheduled_maintenance_date")
+  @@map("scheduled_maintenance")
+}
+
+model Banner {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  imageUrl    String    @map("image_url")
+  targetUrl   String?   @map("target_url")
+  description String?
+  startDate   DateTime? @map("start_date") @db.Date
+  endDate     DateTime? @map("end_date") @db.Date
+  isActive    Boolean   @default(true) @map("is_active")
+  tags        String[]
+  createdAt   DateTime  @default(now()) @map("created_at") @db.Timestamptz(6)
+  updatedAt   DateTime  @default(now()) @updatedAt @map("updated_at") @db.Timestamptz(6)
+
+  @@map("banners")
+}
+
+enum UserRole {
+  BIKE_OWNER
+  MECHANIC
+  ADMIN
+}
+
+enum BikeType {
+  SPEED
+  MOUNTAIN_BIKE
+  ELECTRIC
+  URBAN
+}
+
+enum TractionType {
+  MANUAL
+  ASSISTED
+}
