@@ -45,12 +45,19 @@ const swaggerOptions = {
       version: '1.0.0',
       description: 'API for managing bicycle maintenance, components, and mechanics',
     },
-    servers: [
-      {
-        url: `http://localhost:${PORT}/api`,
-        description: 'Development server',
-      },
-    ],
+    servers: process.env.NODE_ENV === 'production'
+      ? [
+          {
+            url: 'https://api.yourdomain.com/api',
+            description: 'Production server',
+          },
+        ]
+      : [
+          {
+            url: `http://localhost:${PORT}/api`,
+            description: 'Development server',
+          },
+        ],
     components: {
       securitySchemes: {
         bearerAuth: {
@@ -66,16 +73,51 @@ const swaggerOptions = {
 
 const specs = swaggerJsdoc(swaggerOptions);
 
-// Middleware
-app.use(helmet());
+// Security Middleware
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
+      imgSrc: ["'self'", "data:", "https:"],
+    },
+  },
+  hsts: {
+    maxAge: 31536000, // 1 year
+    includeSubDomains: true,
+    preload: true
+  }
+}));
+
+// Dynamic CORS configuration
+const allowedOrigins = process.env.NODE_ENV === 'production' 
+  ? [
+      process.env.FRONTEND_URL,
+      ...(process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : [])
+    ].filter(Boolean)
+  : [
+      'http://localhost:3000',
+      'http://localhost:3001', 
+      'http://localhost:3002',
+      'http://localhost:3003'
+    ];
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001', 
-    'http://localhost:3002',
-    'http://localhost:3003'
-  ],
+  origin: (origin, callback) => {
+    // Allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.warn(`CORS blocked origin: ${origin}`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(compression());
 app.use(morgan('combined'));

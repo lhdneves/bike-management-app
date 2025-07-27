@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../../../hooks/useAuth';
 import { bikeAPI } from '../../../utils/bikeApi';
@@ -19,11 +19,26 @@ export default function NewBikePage() {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
-  // Redirect if not authenticated
-  if (!isAuthenticated) {
-    router.push('/Auth/login');
-    return null;
+  // Redirect if not authenticated (client-side only)
+  useEffect(() => {
+    if (!isAuthenticated) {
+      setIsRedirecting(true);
+      router.push('/Auth/login');
+    }
+  }, [isAuthenticated, router]);
+
+  // Show loading while redirecting
+  if (!isAuthenticated || isRedirecting) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-2 text-gray-600">Redirecionando...</p>
+        </div>
+      </div>
+    );
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
