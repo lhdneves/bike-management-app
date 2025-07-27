@@ -46,6 +46,10 @@ export interface AuthResponse {
     user: User;
     token: string;
   };
+  user?: {
+    email: string;
+    name: string;
+  };
   errors?: Array<{
     field: string;
     message: string;

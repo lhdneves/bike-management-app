@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 
 import { errorHandler } from './middleware/errorHandler';
 import { notFound } from './middleware/notFound';
+import { getHealthStatus, testEmailService } from './controllers/healthController';
 import authRoutes from './routes/auth';
 import userRoutes from './routes/users';
 import bikeRoutes from './routes/bikes';
@@ -18,6 +19,9 @@ import componentRoutes from './routes/components';
 import maintenanceRoutes from './routes/maintenance';
 import mechanicRoutes from './routes/mechanics';
 import bannerRoutes from './routes/banners';
+import passwordResetRoutes from './routes/passwordReset';
+import jobsRoutes from './routes/jobs';
+import { maintenanceReminderCron } from './jobs/maintenanceReminderCron';
 
 // Load environment variables
 dotenv.config();
@@ -82,14 +86,9 @@ app.use(limiter);
 // API Documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'OK',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV,
-  });
-});
+// Health check endpoints
+app.get('/health', getHealthStatus);
+app.get('/health/email', testEmailService);
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -100,6 +99,8 @@ app.use('/api/components', componentRoutes);
 app.use('/api/maintenance', maintenanceRoutes);
 app.use('/api/mechanics', mechanicRoutes);
 app.use('/api/banners', bannerRoutes);
+app.use('/api/password-reset', passwordResetRoutes);
+app.use('/api/jobs', jobsRoutes);
 
 // Error handling middleware
 app.use(notFound);
@@ -110,6 +111,10 @@ app.listen(PORT, () => {
   console.log(`🚲 Server running on port ${PORT}`);
   console.log(`📚 API Documentation available at http://localhost:${PORT}/api-docs`);
   console.log(`🏥 Health check available at http://localhost:${PORT}/health`);
+  
+  // Start maintenance reminder cron job
+  console.log(`🕐 Starting maintenance reminder system...`);
+  maintenanceReminderCron.start();
 });
 
 export default app;

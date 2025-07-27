@@ -52,12 +52,20 @@ export const authAPI = {
   },
 
   forgotPassword: async (data: ForgotPasswordFormData): Promise<AuthResponse> => {
-    const response = await api.post('/auth/forgot-password', data);
+    const response = await api.post('/password-reset/request', data);
     return response.data;
   },
 
   resetPassword: async (data: ResetPasswordFormData): Promise<AuthResponse> => {
-    const response = await api.post('/auth/reset-password', data);
+    const response = await api.post('/password-reset/reset', {
+      token: data.token,
+      newPassword: data.password
+    });
+    return response.data;
+  },
+
+  validateResetToken: async (token: string): Promise<AuthResponse> => {
+    const response = await api.get(`/password-reset/validate/${token}`);
     return response.data;
   },
 };

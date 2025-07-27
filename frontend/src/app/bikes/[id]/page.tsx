@@ -4,7 +4,12 @@ import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAuth } from '../../../hooks/useAuth';
 import { bikeAPI } from '../../../utils/bikeApi';
+import { maintenanceAPI, MaintenanceRecord, ScheduledMaintenance } from '../../../utils/maintenanceApi';
 import { Bike as BikeInterface, Component } from '../../../types';
+import MaintenanceModal from '../../../components/maintenance/MaintenanceModal';
+import MaintenanceHistory from '../../../components/maintenance/MaintenanceHistory';
+import ScheduledMaintenanceModal from '../../../components/maintenance/ScheduledMaintenanceModal';
+import ScheduledMaintenanceList from '../../../components/maintenance/ScheduledMaintenanceList';
 import { 
   Bike, 
   ArrowLeft, 
@@ -16,7 +21,8 @@ import {
   Wrench,
   User,
   Zap,
-  Mountain
+  Mountain,
+  Clock
 } from 'lucide-react';
 
 export default function BikeDetailPage() {
@@ -25,9 +31,17 @@ export default function BikeDetailPage() {
   const { isAuthenticated } = useAuth();
   const [bike, setBike] = useState<BikeInterface | null>(null);
   const [components, setComponents] = useState<Component[]>([]);
+  const [maintenanceRecords, setMaintenanceRecords] = useState<MaintenanceRecord[]>([]);
+  const [scheduledMaintenance, setScheduledMaintenance] = useState<ScheduledMaintenance[]>([]);
   const [activeTab, setActiveTab] = useState('components');
   const [isLoading, setIsLoading] = useState(true);
+  const [isMaintenanceLoading, setIsMaintenanceLoading] = useState(false);
+  const [isScheduledLoading, setIsScheduledLoading] = useState(false);
   const [error, setError] = useState('');
+  const [isMaintenanceModalOpen, setIsMaintenanceModalOpen] = useState(false);
+  const [isScheduledModalOpen, setIsScheduledModalOpen] = useState(false);
+  const [editingMaintenanceRecord, setEditingMaintenanceRecord] = useState<MaintenanceRecord | null>(null);
+  const [editingScheduledRecord, setEditingScheduledRecord] = useState<ScheduledMaintenance | null>(null);
 
   const bikeId = params.id as string;
 
@@ -71,6 +85,99 @@ export default function BikeDetailPage() {
       setIsLoading(false);
     }
   };
+
+  const loadMaintenanceData = async () => {
+    setIsMaintenanceLoading(true);
+    try {
+      const response = await maintenanceAPI.getBikeMaintenanceRecords(bikeId);
+      if (response.success) {
+        setMaintenanceRecords(response.data || []);
+      } else {
+        console.error('Error loading maintenance records:', response.message);
+      }
+    } catch (err: any) {
+      console.error('Error loading maintenance records:', err);
+    } finally {
+      setIsMaintenanceLoading(false);
+    }
+  };
+
+  const loadScheduledMaintenanceData = async () => {
+    setIsScheduledLoading(true);
+    try {
+      const response = await maintenanceAPI.getBikeScheduledMaintenance(bikeId);
+      if (response.success) {
+        setScheduledMaintenance(response.data || []);
+      } else {
+        console.error('Error loading scheduled maintenance:', response.message);
+      }
+    } catch (err: any) {
+      console.error('Error loading scheduled maintenance:', err);
+    } finally {
+      setIsScheduledLoading(false);
+    }
+  };
+
+  const handleOpenMaintenanceModal = () => {
+    setEditingMaintenanceRecord(null);
+    setIsMaintenanceModalOpen(true);
+  };
+
+  const handleEditMaintenanceRecord = (record: MaintenanceRecord) => {
+    setEditingMaintenanceRecord(record);
+    setIsMaintenanceModalOpen(true);
+  };
+
+  const handleDeleteMaintenanceRecord = async (recordId: string) => {
+    const response = await maintenanceAPI.deleteMaintenanceRecord(recordId);
+    if (response.success) {
+      loadMaintenanceData(); // Reload maintenance records
+    } else {
+      alert(response.message || 'Erro ao excluir registro de manutenção');
+    }
+  };
+
+  const handleMaintenanceSuccess = () => {
+    loadMaintenanceData(); // Reload maintenance records after successful create/update
+  };
+
+  // Scheduled Maintenance handlers
+  const handleOpenScheduledModal = () => {
+    setEditingScheduledRecord(null);
+    setIsScheduledModalOpen(true);
+  };
+
+  const handleEditScheduledRecord = (record: ScheduledMaintenance) => {
+    setEditingScheduledRecord(record);
+    setIsScheduledModalOpen(true);
+  };
+
+  const handleDeleteScheduledRecord = async (recordId: string) => {
+    const response = await maintenanceAPI.deleteScheduledMaintenance(recordId);
+    if (response.success) {
+      loadScheduledMaintenanceData(); // Reload scheduled maintenance
+    } else {
+      alert(response.message || 'Erro ao excluir agendamento de manutenção');
+    }
+  };
+
+  const handleScheduledSuccess = () => {
+    loadScheduledMaintenanceData(); // Reload scheduled maintenance after successful create/update
+  };
+
+  // Load maintenance data when switching to maintenance tab
+  useEffect(() => {
+    if (activeTab === 'maintenance' && bike) {
+      loadMaintenanceData();
+    }
+  }, [activeTab, bike]);
+
+  // Load scheduled maintenance data when switching to scheduled tab
+  useEffect(() => {
+    if (activeTab === 'scheduled' && bike) {
+      loadScheduledMaintenanceData();
+    }
+  }, [activeTab, bike]);
 
   const getBikeIcon = (type: string) => {
     switch (type) {
@@ -195,7 +302,7 @@ export default function BikeDetailPage() {
             <div>
               <h3 className="text-sm font-medium text-gray-500">Data de Cadastro</h3>
               <p className="mt-1 text-sm text-gray-900">
-                {new Date(bike.created_at).toLocaleDateString('pt-BR')}
+                {new Date(bike.createdAt).toLocaleDateString('pt-BR')}
               </p>
             </div>
           </div>
@@ -215,6 +322,7 @@ export default function BikeDetailPage() {
               {[
                 { id: 'components', name: 'Componentes', icon: Settings },
                 { id: 'maintenance', name: 'Manutenções', icon: Wrench },
+                { id: 'scheduled', name: 'Agendamentos', icon: Clock },
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -299,30 +407,70 @@ export default function BikeDetailPage() {
                   <h3 className="text-lg font-medium text-gray-900">
                     Histórico de Manutenções
                   </h3>
-                  <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                  <button 
+                    onClick={handleOpenMaintenanceModal}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+                  >
                     <Plus className="h-4 w-4 mr-2" />
                     Nova Manutenção
                   </button>
                 </div>
 
-                <div className="text-center py-12">
-                  <Wrench className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    Nenhuma manutenção registrada
+                <MaintenanceHistory
+                  maintenanceRecords={maintenanceRecords}
+                  onEdit={handleEditMaintenanceRecord}
+                  onDelete={handleDeleteMaintenanceRecord}
+                  isLoading={isMaintenanceLoading}
+                />
+              </div>
+            )}
+
+            {activeTab === 'scheduled' && (
+              <div className="space-y-6">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-medium text-gray-900">
+                    Manutenções Agendadas
                   </h3>
-                  <p className="text-gray-600 mb-6">
-                    Registre manutenções para acompanhar o histórico da sua bicicleta.
-                  </p>
-                  <button className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
+                  <button 
+                    onClick={handleOpenScheduledModal}
+                    className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+                  >
                     <Plus className="h-4 w-4 mr-2" />
-                    Registrar Primeira Manutenção
+                    Agendar Manutenção
                   </button>
                 </div>
+
+                <ScheduledMaintenanceList
+                  scheduledMaintenance={scheduledMaintenance}
+                  onEdit={handleEditScheduledRecord}
+                  onDelete={handleDeleteScheduledRecord}
+                  isLoading={isScheduledLoading}
+                />
               </div>
             )}
           </div>
         </div>
       </div>
+
+      {/* Maintenance Modal */}
+      <MaintenanceModal
+        isOpen={isMaintenanceModalOpen}
+        onClose={() => setIsMaintenanceModalOpen(false)}
+        onSuccess={handleMaintenanceSuccess}
+        bikeId={bikeId}
+        bikeName={bike?.name || ''}
+        editingRecord={editingMaintenanceRecord}
+      />
+
+      {/* Scheduled Maintenance Modal */}
+      <ScheduledMaintenanceModal
+        isOpen={isScheduledModalOpen}
+        onClose={() => setIsScheduledModalOpen(false)}
+        onSuccess={handleScheduledSuccess}
+        bikeId={bikeId}
+        bikeName={bike?.name || ''}
+        editingRecord={editingScheduledRecord}
+      />
     </div>
   );
 }
