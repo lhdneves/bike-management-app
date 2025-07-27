@@ -16,6 +16,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "jsx": "react-jsx",
+    "types": ["node"],
+    "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
@@ -34,6 +36,11 @@
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.test.ts"
+    "**/*.test.ts",
+    "src/utils/check*.ts",
+    "src/utils/create*.ts",
+    "src/utils/test*.ts",
+    "src/utils/mockRedis.ts",
+    "src/utils/runMigration.ts"
   ]
 }
