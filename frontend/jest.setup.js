@@ -1,27 +1,39 @@
 import '@testing-library/jest-dom'
 
-// Mock Next.js router
+// Mock Next.js router with consistent behavior
+const mockRouter = {
+  push: jest.fn(),
+  replace: jest.fn(),
+  prefetch: jest.fn(),
+  back: jest.fn(),
+  forward: jest.fn(),
+  refresh: jest.fn(),
+  pathname: '/',
+  route: '/',
+  query: {},
+  asPath: '/',
+}
+
 jest.mock('next/navigation', () => ({
-  useRouter() {
-    return {
-      push: jest.fn(),
-      replace: jest.fn(),
-      prefetch: jest.fn(),
-      back: jest.fn(),
-      forward: jest.fn(),
-      refresh: jest.fn(),
-    }
-  },
-  usePathname() {
-    return '/'
-  },
-  useSearchParams() {
-    return new URLSearchParams()
-  },
+  useRouter: () => mockRouter,
+  usePathname: () => '/',
+  useSearchParams: () => new URLSearchParams(),
 }))
 
-// Mock fetch globally
-global.fetch = jest.fn()
+// Also mock legacy router for older components
+jest.mock('next/router', () => ({
+  useRouter: () => mockRouter,
+}))
+
+// Mock fetch globally with better default behavior
+global.fetch = jest.fn(() =>
+  Promise.resolve({
+    ok: true,
+    status: 200,
+    json: () => Promise.resolve({}),
+    text: () => Promise.resolve(''),
+  })
+)
 
 // Mock localStorage
 const localStorageMock = {

@@ -19,7 +19,7 @@ const customJestConfig = {
     '!src/app/layout.tsx',
     '!src/app/page.tsx'
   ],
-  moduleNameMapping: {
+  moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
 }

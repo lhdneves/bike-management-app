@@ -9,7 +9,7 @@ datasource db {
 }
 
 model User {
-  id                 String               @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                 String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name               String
   email              String               @unique
   passwordHash       String               @map("password_hash")
@@ -29,7 +29,7 @@ model User {
 }
 
 model Bike {
-  id                   String                 @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                   String                 @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   ownerId              String                 @map("owner_id") @db.Uuid
   name                 String
   description          String?
@@ -48,7 +48,7 @@ model Bike {
 }
 
 model Component {
-  id               String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id               String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   bikeId           String    @map("bike_id") @db.Uuid
   name             String
   description      String?
@@ -63,7 +63,7 @@ model Component {
 }
 
 model Mechanic {
-  id                 String              @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                 String              @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId             String              @unique @map("user_id") @db.Uuid
   address            String
   phone              String
@@ -79,7 +79,7 @@ model Mechanic {
 }
 
 model MaintenanceRecord {
-  id                 String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                 String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   bikeId             String    @map("bike_id") @db.Uuid
   mechanicId         String?   @map("mechanic_id") @db.Uuid
   serviceDate        DateTime  @map("service_date") @db.Date
@@ -97,7 +97,7 @@ model MaintenanceRecord {
 }
 
 model ScheduledMaintenance {
-  id                     String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                     String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   bikeId                 String   @map("bike_id") @db.Uuid
   scheduledDate          DateTime @map("scheduled_date") @db.Date
   serviceDescription     String   @map("service_description")
@@ -114,7 +114,7 @@ model ScheduledMaintenance {
 }
 
 model Banner {
-  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id          String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   imageUrl    String    @map("image_url")
   targetUrl   String?   @map("target_url")
   description String?
@@ -129,7 +129,7 @@ model Banner {
 }
 
 model PasswordResetToken {
-  id        String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId    String   @map("user_id") @db.Uuid
   token     String   @unique
   expiresAt DateTime @map("expires_at") @db.Timestamptz(6)
@@ -163,7 +163,7 @@ enum TractionType {
 }
 
 model UserEmailPreference {
-  id                    String               @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                    String               @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId                String               @unique @map("user_id") @db.Uuid
   maintenanceReminders  Boolean              @default(true) @map("maintenance_reminders")
   reminderFrequency     String               @default("once") @map("reminder_frequency") @db.VarChar(20)
@@ -176,7 +176,7 @@ model UserEmailPreference {
 }
 
 model EmailLog {
-  id                      String                @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id                      String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   userId                  String                @map("user_id") @db.Uuid
   scheduledMaintenanceId  String?               @map("scheduled_maintenance_id") @db.Uuid
   emailType               String                @map("email_type") @db.VarChar(50)
