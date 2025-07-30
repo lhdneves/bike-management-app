@@ -183,7 +183,7 @@ export default function MaintenanceModal({
                 name="service_date"
                 value={formData.service_date}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
                   errors.service_date ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
@@ -205,7 +205,7 @@ export default function MaintenanceModal({
                 value={formData.mechanic_name}
                 onChange={handleChange}
                 placeholder="Nome do mecânico"
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
                   errors.mechanic_name ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
@@ -227,7 +227,7 @@ export default function MaintenanceModal({
                 onChange={handleChange}
                 rows={3}
                 placeholder="Descreva o serviço realizado..."
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
                   errors.service_description ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
@@ -251,7 +251,7 @@ export default function MaintenanceModal({
                 step="0.01"
                 min="0"
                 placeholder="0.00"
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
                   errors.cost ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />

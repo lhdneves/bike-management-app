@@ -220,7 +220,7 @@ export default function EditComponentPage() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
                 placeholder="Ex: Freio Dianteiro, Corrente, Pedal"
               />
             </div>
@@ -236,7 +236,7 @@ export default function EditComponentPage() {
                 rows={3}
                 value={formData.description}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Descreva o componente, marca, modelo, especificações..."
               />
             </div>
@@ -252,7 +252,7 @@ export default function EditComponentPage() {
                 name="installationDate"
                 value={formData.installationDate}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
               />
               <p className="mt-1 text-xs text-gray-500">
                 Data em que o componente foi instalado na bicicleta
@@ -270,7 +270,7 @@ export default function EditComponentPage() {
                 rows={2}
                 value={formData.observation}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Observações especiais, condições de uso, garantia..."
               />
             </div>
