@@ -212,8 +212,8 @@ export default function ScheduledMaintenanceModal({
                 value={formData.scheduled_date}
                 onChange={handleChange}
                 min={new Date().toISOString().split('T')[0]}
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.scheduled_date ? 'border-red-300' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.scheduled_date ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
               {errors.scheduled_date && (
@@ -234,8 +234,8 @@ export default function ScheduledMaintenanceModal({
                 onChange={handleChange}
                 rows={3}
                 placeholder="Descreva o serviço a ser realizado..."
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.service_description ? 'border-red-300' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.service_description ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
               {errors.service_description && (
@@ -254,8 +254,8 @@ export default function ScheduledMaintenanceModal({
                 name="notification_days_before"
                 value={formData.notification_days_before}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.notification_days_before ? 'border-red-300' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.notification_days_before ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               >
                 {notificationOptions.map((option) => (
