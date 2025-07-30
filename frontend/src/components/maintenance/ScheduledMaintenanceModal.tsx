@@ -213,7 +213,7 @@ export default function ScheduledMaintenanceModal({
                 onChange={handleChange}
                 min={new Date().toISOString().split('T')[0]}
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.scheduled_date ? 'border-red-300' : 'border-gray-300'
+                  errors.scheduled_date ? 'border-red-300' : 'border-blue-200'
                 }`}
               />
               {errors.scheduled_date && (
@@ -235,7 +235,7 @@ export default function ScheduledMaintenanceModal({
                 rows={3}
                 placeholder="Descreva o serviço a ser realizado..."
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.service_description ? 'border-red-300' : 'border-gray-300'
+                  errors.service_description ? 'border-red-300' : 'border-blue-200'
                 }`}
               />
               {errors.service_description && (
@@ -255,7 +255,7 @@ export default function ScheduledMaintenanceModal({
                 value={formData.notification_days_before}
                 onChange={handleChange}
                 className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.notification_days_before ? 'border-red-300' : 'border-gray-300'
+                  errors.notification_days_before ? 'border-red-300' : 'border-blue-200'
                 }`}
               >
                 {notificationOptions.map((option) => (
@@ -274,7 +274,7 @@ export default function ScheduledMaintenanceModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-2 border border-blue-200 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Cancelar
               </button>

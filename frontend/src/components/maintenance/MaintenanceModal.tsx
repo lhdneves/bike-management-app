@@ -183,8 +183,8 @@ export default function MaintenanceModal({
                 name="service_date"
                 value={formData.service_date}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.service_date ? 'border-red-300' : 'border-gray-300'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.service_date ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
               {errors.service_date && (
@@ -205,8 +205,8 @@ export default function MaintenanceModal({
                 value={formData.mechanic_name}
                 onChange={handleChange}
                 placeholder="Nome do mecânico"
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.mechanic_name ? 'border-red-300' : 'border-gray-300'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.mechanic_name ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
               {errors.mechanic_name && (
@@ -227,8 +227,8 @@ export default function MaintenanceModal({
                 onChange={handleChange}
                 rows={3}
                 placeholder="Descreva o serviço realizado..."
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.service_description ? 'border-red-300' : 'border-gray-300'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.service_description ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
               {errors.service_description && (
@@ -251,8 +251,8 @@ export default function MaintenanceModal({
                 step="0.01"
                 min="0"
                 placeholder="0.00"
-                className={`w-full px-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.cost ? 'border-red-300' : 'border-gray-300'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.cost ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
               />
               {errors.cost && (
@@ -265,7 +265,7 @@ export default function MaintenanceModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-2 border border-blue-200 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Cancelar
               </button>

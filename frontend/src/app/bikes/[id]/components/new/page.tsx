@@ -180,7 +180,7 @@ export default function NewComponentPage() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
                 placeholder="Ex: Freio Dianteiro, Corrente, Pedal"
               />
             </div>
@@ -196,7 +196,7 @@ export default function NewComponentPage() {
                 rows={3}
                 value={formData.description}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Descreva o componente, marca, modelo, especificações..."
               />
             </div>
@@ -212,7 +212,7 @@ export default function NewComponentPage() {
                 name="installationDate"
                 value={formData.installationDate}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
               />
               <p className="mt-1 text-xs text-gray-500">
                 Data em que o componente foi instalado na bicicleta
@@ -230,7 +230,7 @@ export default function NewComponentPage() {
                 rows={2}
                 value={formData.observation}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Observações especiais, condições de uso, garantia..."
               />
             </div>
@@ -240,7 +240,7 @@ export default function NewComponentPage() {
               <button
                 type="button"
                 onClick={() => router.push(`/bikes/${bikeId}`)}
-                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="px-4 py-2 border border-blue-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Cancelar
               </button>

@@ -135,7 +135,7 @@ export default function NewBikePage() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
                 placeholder="Ex: Minha Mountain Bike"
               />
             </div>
@@ -151,7 +151,7 @@ export default function NewBikePage() {
                 required
                 value={formData.type}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
               >
                 <option value={BikeType.URBAN}>Urbana</option>
                 <option value={BikeType.SPEED}>Speed</option>
@@ -171,7 +171,7 @@ export default function NewBikePage() {
                 required
                 value={formData.tractionType}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
               >
                 <option value={TractionType.MANUAL}>Manual</option>
                 <option value={TractionType.ASSISTED}>Assistida</option>
@@ -189,7 +189,7 @@ export default function NewBikePage() {
                 name="manufacturer"
                 value={formData.manufacturer}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
                 placeholder="Ex: Specialized, Trek, Caloi"
               />
             </div>
@@ -205,7 +205,7 @@ export default function NewBikePage() {
                 rows={3}
                 value={formData.description}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Descreva sua bicicleta, modelo, ano, observações especiais..."
               />
             </div>
@@ -215,7 +215,7 @@ export default function NewBikePage() {
               <button
                 type="button"
                 onClick={() => router.back()}
-                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="px-4 py-2 border border-blue-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
               >
                 Cancelar
               </button>
