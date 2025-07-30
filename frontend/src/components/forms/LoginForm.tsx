@@ -136,7 +136,7 @@ export default function LoginForm() {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
+                  <Mail className="h-5 w-5 text-blue-400" />
                 </div>
                 <input
                   id="email"
@@ -146,8 +146,8 @@ export default function LoginForm() {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                    errors.email ? 'border-red-300' : 'border-gray-300'
+                  className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                    errors.email ? 'border-red-300 bg-red-50' : 'border-blue-200'
                   }`}
                   placeholder="seu@email.com"
                 />
@@ -162,7 +162,7 @@ export default function LoginForm() {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-blue-400" />
                 </div>
                 <input
                   id="password"
@@ -172,8 +172,8 @@ export default function LoginForm() {
                   required
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                    errors.password ? 'border-red-300' : 'border-gray-300'
+                  className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                    errors.password ? 'border-red-300 bg-red-50' : 'border-blue-200'
                   }`}
                   placeholder="Sua senha"
                 />
@@ -183,9 +183,9 @@ export default function LoginForm() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400" />
+                    <EyeOff className="h-5 w-5 text-blue-400" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400" />
+                    <Eye className="h-5 w-5 text-blue-400" />
                   )}
                 </button>
               </div>

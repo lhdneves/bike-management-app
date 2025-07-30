@@ -137,7 +137,7 @@ export default function ForgotPasswordForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-gray-400" />
+                <Mail className="h-5 w-5 text-blue-400" />
               </div>
               <input
                 id="email"
@@ -147,8 +147,8 @@ export default function ForgotPasswordForm() {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 ${
-                  errors.email ? 'border-red-300' : 'border-gray-300'
+                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
+                  errors.email ? 'border-red-300 bg-red-50' : 'border-blue-200'
                 }`}
                 placeholder="seu@email.com"
               />
@@ -175,7 +175,7 @@ export default function ForgotPasswordForm() {
             <button
               type="button"
               onClick={handleBackToLogin}
-              className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-blue-200 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Voltar ao Login
