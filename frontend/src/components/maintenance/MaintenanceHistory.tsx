@@ -116,7 +116,7 @@ export default function MaintenanceHistory({
             <div className="flex items-center space-x-2 ml-4">
               <button
                 onClick={() => onEdit(record)}
-                className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
+                className="p-1 text-gray-400 hover:text-orange-600 transition-colors"
                 title="Editar manutenção"
               >
                 <Edit className="h-4 w-4" />
@@ -162,7 +162,7 @@ export default function MaintenanceHistory({
 
       {/* Total cost summary */}
       {maintenanceRecords.some(record => record.cost) && (
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mt-6">
           <div className="flex items-center justify-between">
             <span className="text-sm font-medium text-blue-900">
               Total gasto em manutenções:

@@ -105,7 +105,7 @@ export default function LoginForm() {
             </button>
           </div>
           <div className="flex justify-center">
-            <Bike className="h-12 w-12 text-blue-600" />
+            <Bike className="h-12 w-12 text-orange-600" />
           </div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Entre em sua conta
@@ -114,7 +114,7 @@ export default function LoginForm() {
             Ou{' '}
             <button
               onClick={handleCreateAccount}
-              className="font-medium text-blue-600 hover:text-blue-500"
+              className="font-medium text-orange-600 hover:text-orange-500"
             >
               crie uma nova conta
             </button>
@@ -136,7 +136,7 @@ export default function LoginForm() {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-blue-400" />
+                  <Mail className="h-5 w-5 text-orange-400" />
                 </div>
                 <input
                   id="email"
@@ -146,8 +146,8 @@ export default function LoginForm() {
                   required
                   value={formData.email}
                   onChange={handleInputChange}
-                  className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                    errors.email ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                  className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                    errors.email ? 'border-red-300 bg-red-50' : 'border-orange-200'
                   }`}
                   placeholder="seu@email.com"
                 />
@@ -162,7 +162,7 @@ export default function LoginForm() {
               </label>
               <div className="mt-1 relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-blue-400" />
+                  <Lock className="h-5 w-5 text-orange-400" />
                 </div>
                 <input
                   id="password"
@@ -172,8 +172,8 @@ export default function LoginForm() {
                   required
                   value={formData.password}
                   onChange={handleInputChange}
-                  className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                    errors.password ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                  className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                    errors.password ? 'border-red-300 bg-red-50' : 'border-orange-200'
                   }`}
                   placeholder="Sua senha"
                 />
@@ -183,9 +183,9 @@ export default function LoginForm() {
                   onClick={() => setShowPassword(!showPassword)}
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-blue-400" />
+                    <EyeOff className="h-5 w-5 text-orange-400" />
                   ) : (
-                    <Eye className="h-5 w-5 text-blue-400" />
+                    <Eye className="h-5 w-5 text-orange-400" />
                   )}
                 </button>
               </div>
@@ -199,7 +199,7 @@ export default function LoginForm() {
               <button
                 type="button"
                 onClick={handleForgotPassword}
-                className="font-medium text-blue-600 hover:text-blue-500"
+                className="font-medium text-orange-600 hover:text-orange-500"
               >
                 Esqueci minha senha
               </button>
@@ -211,7 +211,7 @@ export default function LoginForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <div className="flex items-center">
@@ -241,7 +241,7 @@ export default function LoginForm() {
             <button
               type="button"
               disabled
-              className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
                 <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>

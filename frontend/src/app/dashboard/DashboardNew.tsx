@@ -128,7 +128,7 @@ export default function DashboardNew() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
-              <Bike className="h-8 w-8 text-blue-600 mr-3" />
+              <Bike className="h-8 w-8 text-orange-600 mr-3" />
               <h1 className="text-2xl font-bold text-gray-900">BikeManager</h1>
             </div>
             
@@ -137,7 +137,7 @@ export default function DashboardNew() {
                 <Settings className="h-5 w-5" />
               </button>
               <div className="flex items-center space-x-2">
-                <div className="h-8 w-8 bg-blue-600 rounded-full flex items-center justify-center">
+                <div className="h-8 w-8 bg-orange-600 rounded-full flex items-center justify-center">
                   <User className="h-5 w-5 text-white" />
                 </div>
                 <span className="text-sm font-medium text-gray-700">{user.name}</span>
@@ -255,7 +255,7 @@ export default function DashboardNew() {
                 </h3>
                 <button 
                   onClick={() => router.push('/bikes/new')}
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Adicionar Bicicleta
@@ -279,7 +279,7 @@ export default function DashboardNew() {
                   </p>
                   <button 
                     onClick={() => router.push('/bikes/new')}
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-orange-600 hover:bg-orange-700"
                   >
                     <Plus className="h-5 w-5 mr-2" />
                     Cadastrar Primeira Bicicleta
@@ -335,7 +335,7 @@ export default function DashboardNew() {
                       <div className="mt-4 flex space-x-2">
                         <button 
                           onClick={() => router.push(`/bikes/${bike.id}`)}
-                          className="flex-1 px-3 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100"
+                          className="flex-1 px-3 py-2 text-sm font-medium text-orange-600 bg-orange-50 rounded-md hover:bg-orange-100"
                         >
                           Ver Detalhes
                         </button>

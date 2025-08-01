@@ -144,7 +144,7 @@ export default function RegisterForm() {
             Ou{' '}
             <button
               onClick={() => router.push('/Auth/login')}
-              className="font-medium text-blue-600 hover:text-blue-500"
+              className="font-medium text-orange-600 hover:text-orange-500"
             >
               faça login em sua conta existente
             </button>
@@ -165,7 +165,7 @@ export default function RegisterForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <User className="h-5 w-5 text-blue-400" />
+                <User className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="name"
@@ -174,8 +174,8 @@ export default function RegisterForm() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.name ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.name ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="Seu nome completo"
               />
@@ -190,7 +190,7 @@ export default function RegisterForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-blue-400" />
+                <Mail className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="email"
@@ -199,8 +199,8 @@ export default function RegisterForm() {
                 required
                 value={formData.email}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.email ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.email ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="seu@email.com"
               />
@@ -215,7 +215,7 @@ export default function RegisterForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Mail className="h-5 w-5 text-blue-400" />
+                <Mail className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="confirmEmail"
@@ -224,8 +224,8 @@ export default function RegisterForm() {
                 required
                 value={formData.confirmEmail}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.confirmEmail ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.confirmEmail ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="Confirme seu email"
               />
@@ -240,7 +240,7 @@ export default function RegisterForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Phone className="h-5 w-5 text-blue-400" />
+                <Phone className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="phone"
@@ -248,8 +248,8 @@ export default function RegisterForm() {
                 type="tel"
                 value={formData.phone}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.phone ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.phone ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="(11) 99999-9999"
               />
@@ -264,7 +264,7 @@ export default function RegisterForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-blue-400" />
+                <Lock className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="password"
@@ -273,8 +273,8 @@ export default function RegisterForm() {
                 required
                 value={formData.password}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.password ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.password ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="Sua senha"
               />
@@ -284,9 +284,9 @@ export default function RegisterForm() {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-blue-400" />
+                  <EyeOff className="h-5 w-5 text-orange-400" />
                 ) : (
-                  <Eye className="h-5 w-5 text-blue-400" />
+                  <Eye className="h-5 w-5 text-orange-400" />
                 )}
               </button>
             </div>
@@ -300,7 +300,7 @@ export default function RegisterForm() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-blue-400" />
+                <Lock className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="confirmPassword"
@@ -309,8 +309,8 @@ export default function RegisterForm() {
                 required
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.confirmPassword ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.confirmPassword ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="Confirme sua senha"
               />
@@ -320,9 +320,9 @@ export default function RegisterForm() {
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-blue-400" />
+                  <EyeOff className="h-5 w-5 text-orange-400" />
                 ) : (
-                  <Eye className="h-5 w-5 text-blue-400" />
+                  <Eye className="h-5 w-5 text-orange-400" />
                 )}
               </button>
             </div>
@@ -337,11 +337,11 @@ export default function RegisterForm() {
               type="checkbox"
               checked={formData.acceptTerms}
               onChange={handleInputChange}
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              className="h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
             />
             <label htmlFor="acceptTerms" className="ml-2 block text-sm text-gray-900">
               Eu aceito os{' '}
-              <a href="#" className="text-blue-600 hover:text-blue-500">
+              <a href="#" className="text-orange-600 hover:text-orange-500">
                 termos e condições
               </a>{' '}
               *
@@ -354,7 +354,7 @@ export default function RegisterForm() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <div className="flex items-center">
