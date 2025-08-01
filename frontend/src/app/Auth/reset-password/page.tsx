@@ -178,7 +178,7 @@ export default function ResetPasswordPage() {
             <div className="mt-6">
               <button
                 onClick={() => router.push('/Auth/forgot-password')}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Solicitar Novo Link
               </button>
@@ -228,7 +228,7 @@ export default function ResetPasswordPage() {
             Redefinir Senha
           </h2>
           {userInfo && (
-            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-md">
+            <div className="mt-4 p-4 bg-orange-50 border border-orange-200 rounded-md">
               <p className="text-sm text-blue-700 text-center">
                 Redefinindo senha para <strong>{userInfo.name}</strong> ({userInfo.email})
               </p>
@@ -253,7 +253,7 @@ export default function ResetPasswordPage() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-blue-400" />
+                <Lock className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="password"
@@ -262,8 +262,8 @@ export default function ResetPasswordPage() {
                 required
                 value={formData.password}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.password ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.password ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="Sua nova senha"
               />
@@ -273,9 +273,9 @@ export default function ResetPasswordPage() {
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? (
-                  <EyeOff className="h-5 w-5 text-blue-400" />
+                  <EyeOff className="h-5 w-5 text-orange-400" />
                 ) : (
-                  <Eye className="h-5 w-5 text-blue-400" />
+                  <Eye className="h-5 w-5 text-orange-400" />
                 )}
               </button>
             </div>
@@ -289,7 +289,7 @@ export default function ResetPasswordPage() {
             </label>
             <div className="mt-1 relative">
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Lock className="h-5 w-5 text-blue-400" />
+                <Lock className="h-5 w-5 text-orange-400" />
               </div>
               <input
                 id="confirmPassword"
@@ -298,8 +298,8 @@ export default function ResetPasswordPage() {
                 required
                 value={formData.confirmPassword}
                 onChange={handleInputChange}
-                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.confirmPassword ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`block w-full pl-10 pr-10 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.confirmPassword ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
                 placeholder="Confirme sua nova senha"
               />
@@ -309,9 +309,9 @@ export default function ResetPasswordPage() {
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
               >
                 {showConfirmPassword ? (
-                  <EyeOff className="h-5 w-5 text-blue-400" />
+                  <EyeOff className="h-5 w-5 text-orange-400" />
                 ) : (
-                  <Eye className="h-5 w-5 text-blue-400" />
+                  <Eye className="h-5 w-5 text-orange-400" />
                 )}
               </button>
             </div>
@@ -323,7 +323,7 @@ export default function ResetPasswordPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <div className="flex items-center">

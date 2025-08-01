@@ -102,7 +102,7 @@ export default function ScheduledMaintenanceList({
     if (daysUntil < 0) return 'text-red-600 bg-red-50 border-red-200';
     if (daysUntil <= 7) return 'text-orange-600 bg-orange-50 border-orange-200';
     if (daysUntil <= 30) return 'text-yellow-600 bg-yellow-50 border-yellow-200';
-    return 'text-blue-600 bg-blue-50 border-blue-200';
+    return 'text-orange-600 bg-orange-50 border-orange-200';
   };
 
   const getUrgencyText = (dateString: string) => {
@@ -174,7 +174,7 @@ export default function ScheduledMaintenanceList({
                   <div className="flex items-center space-x-2 ml-4">
                     <button
                       onClick={() => onEdit(record)}
-                      className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
+                      className="p-1 text-gray-400 hover:text-orange-600 transition-colors"
                       title="Editar agendamento"
                     >
                       <Edit className="h-4 w-4" />
@@ -235,7 +235,7 @@ export default function ScheduledMaintenanceList({
                   <div className="flex items-center space-x-2 ml-4">
                     <button
                       onClick={() => onEdit(record)}
-                      className="p-1 text-gray-400 hover:text-blue-600 transition-colors"
+                      className="p-1 text-gray-400 hover:text-orange-600 transition-colors"
                       title="Editar agendamento"
                     >
                       <Edit className="h-4 w-4" />

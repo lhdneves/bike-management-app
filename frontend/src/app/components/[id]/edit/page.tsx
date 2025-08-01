@@ -144,7 +144,7 @@ export default function EditComponentPage() {
           <h3 className="text-lg font-medium text-gray-900 mb-2">{error}</h3>
           <button
             onClick={() => router.push('/dashboard')}
-            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Voltar ao Dashboard
@@ -168,7 +168,7 @@ export default function EditComponentPage() {
                 <ArrowLeft className="h-5 w-5" />
               </button>
               <div className="flex items-center">
-                <Settings className="h-8 w-8 text-blue-600 mr-3" />
+                <Settings className="h-8 w-8 text-orange-600 mr-3" />
                 <div>
                   <h1 className="text-2xl font-bold text-gray-900">Editar Componente</h1>
                   <p className="text-sm text-gray-600">
@@ -220,7 +220,7 @@ export default function EditComponentPage() {
                 required
                 value={formData.name}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-orange-200 bg-orange-50 text-gray-900 shadow-sm focus:border-orange-500 focus:ring-orange-500 focus:bg-white transition-colors text-sm"
                 placeholder="Ex: Freio Dianteiro, Corrente, Pedal"
               />
             </div>
@@ -236,7 +236,7 @@ export default function EditComponentPage() {
                 rows={3}
                 value={formData.description}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-orange-200 bg-orange-50 text-gray-900 shadow-sm focus:border-orange-500 focus:ring-orange-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Descreva o componente, marca, modelo, especificações..."
               />
             </div>
@@ -252,7 +252,7 @@ export default function EditComponentPage() {
                 name="installationDate"
                 value={formData.installationDate}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-orange-200 bg-orange-50 text-gray-900 shadow-sm focus:border-orange-500 focus:ring-orange-500 focus:bg-white transition-colors text-sm"
               />
               <p className="mt-1 text-xs text-gray-500">
                 Data em que o componente foi instalado na bicicleta
@@ -270,7 +270,7 @@ export default function EditComponentPage() {
                 rows={2}
                 value={formData.observation}
                 onChange={handleInputChange}
-                className="mt-1 block w-full px-3 py-2.5 rounded-md border-blue-200 bg-blue-50 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-blue-500 focus:bg-white transition-colors text-sm resize-vertical"
+                className="mt-1 block w-full px-3 py-2.5 rounded-md border-orange-200 bg-orange-50 text-gray-900 shadow-sm focus:border-orange-500 focus:ring-orange-500 focus:bg-white transition-colors text-sm resize-vertical"
                 placeholder="Observações especiais, condições de uso, garantia..."
               />
             </div>
@@ -280,14 +280,14 @@ export default function EditComponentPage() {
               <button
                 type="button"
                 onClick={() => router.push(`/bikes/${component?.bikeId}`)}
-                className="px-4 py-2 border border-blue-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="px-4 py-2 border border-orange-200 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={isLoading}
-                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+                className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
               >
                 {isLoading ? (
                   <>

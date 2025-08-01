@@ -151,7 +151,7 @@ export default function MaintenanceModal({
           </div>
 
           {/* Bike Info */}
-          <div className="mb-4 p-3 bg-blue-50 rounded-lg">
+          <div className="mb-4 p-3 bg-orange-50 rounded-lg">
             <p className="text-sm text-blue-800">
               <strong>Bicicleta:</strong> {bikeName}
             </p>
@@ -183,8 +183,8 @@ export default function MaintenanceModal({
                 name="service_date"
                 value={formData.service_date}
                 onChange={handleChange}
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.service_date ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.service_date ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
               />
               {errors.service_date && (
@@ -205,8 +205,8 @@ export default function MaintenanceModal({
                 value={formData.mechanic_name}
                 onChange={handleChange}
                 placeholder="Nome do mecânico"
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.mechanic_name ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.mechanic_name ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
               />
               {errors.mechanic_name && (
@@ -227,8 +227,8 @@ export default function MaintenanceModal({
                 onChange={handleChange}
                 rows={3}
                 placeholder="Descreva o serviço realizado..."
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.service_description ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.service_description ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
               />
               {errors.service_description && (
@@ -251,8 +251,8 @@ export default function MaintenanceModal({
                 step="0.01"
                 min="0"
                 placeholder="0.00"
-                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-blue-50 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors ${
-                  errors.cost ? 'border-red-300 bg-red-50' : 'border-blue-200'
+                className={`w-full px-3 py-2 border rounded-md shadow-sm bg-orange-50 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:bg-white transition-colors ${
+                  errors.cost ? 'border-red-300 bg-red-50' : 'border-orange-200'
                 }`}
               />
               {errors.cost && (
@@ -265,14 +265,14 @@ export default function MaintenanceModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="flex-1 px-4 py-2 border border-blue-200 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                className="flex-1 px-4 py-2 border border-orange-200 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex-1 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+                className="flex-1 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
               >
                 {isSubmitting ? 'Salvando...' : (editingRecord ? 'Atualizar' : 'Salvar')}
               </button>

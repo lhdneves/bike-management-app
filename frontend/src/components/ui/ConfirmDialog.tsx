@@ -43,9 +43,9 @@ export default function ConfirmDialog({
         };
       case 'info':
         return {
-          icon: 'text-blue-600',
-          button: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
-          background: 'bg-blue-50'
+          icon: 'text-orange-600',
+          button: 'bg-orange-600 hover:bg-orange-700 focus:ring-orange-500',
+          background: 'bg-orange-50'
         };
     }
   };
@@ -101,7 +101,7 @@ export default function ConfirmDialog({
             type="button"
             onClick={handleClose}
             disabled={isLoading}
-            className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50"
+            className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50"
           >
             {cancelText}
           </button>
